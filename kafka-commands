@@ -1,0 +1,29 @@
+Open Apache Source Kafka Startup in local
+
+Start Zookeeper Server
+
+D:\kafka_2.12-3.6.1\bin\windows>zookeeper-server-start.bat ../../config/zookeeper.properties
+
+Start Kafka Server / Broker
+
+D:\kafka_2.12-3.6.1\bin\windows>kafka-server-start.bat ../../config/server.properties
+
+Create topic
+
+D:\kafka_2.12-3.6.1\bin\windows>kafka-topics.bat --bootstrap-server localhost:9092 --create --topic NewTopic --partitions 3 --replication-factor 1
+
+list out all topic names
+
+D:\kafka_2.12-3.6.1\bin\windows>kafka-topics.bat --bootstrap-server localhost:9092 --list
+
+Describe topics
+
+D:\kafka_2.12-3.6.1\bin\windows>kafka-topics.bat --bootstrap-server localhost:9092 --describe --topic NewTopic
+
+Produce message
+
+D:\kafka_2.12-3.6.1\bin\windows>kafka-console-producer.bat --broker-list localhost:9092 --topic NewTopic
+
+consume message
+
+D:\kafka_2.12-3.6.1\bin\windows>kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic NewTopic --from-beginning
